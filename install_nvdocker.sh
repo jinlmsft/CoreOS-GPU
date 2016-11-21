@@ -14,7 +14,7 @@ git clone https://github.com/nvidia/nvidia-docker
 cd nvidia-docker/tools
 sed -i -e "s/os.Link/Copy/" src/nvidia/volumes.go
 docker rmi nvdocker-build
-docker build --build-arg UID=`id -u $USER` -t nvdocker-build -f Dockerfile.build .
+docker build --build-arg USER_ID=`id -u $USER` -t nvdocker-build -f Dockerfile.build .
 docker run -v $PREFIX/bin:/go/bin --rm nvdocker-build
 sudo chown -R root:root $PREFIX
 
